@@ -1,0 +1,44 @@
+-- Sales Trend Analysis Script
+-- Contains: schema for online_sales (generic), and monthly trend queries for PostgreSQL, MySQL, SQLite.
+
+-- Generic schema (adjust types per RDBMS if needed)
+-- CREATE TABLE online_sales (
+--     order_id     INTEGER,
+--     order_date   DATE,
+--     amount       NUMERIC(10,2),
+--     product_id   INTEGER
+-- );
+
+-- PostgreSQL monthly trend
+-- Note: Replace the date range as needed
+-- SELECT
+--     EXTRACT(YEAR FROM order_date) AS order_year,
+--     EXTRACT(MONTH FROM order_date) AS order_month,
+--     SUM(amount) AS total_revenue,
+--     COUNT(DISTINCT order_id) AS total_orders
+-- FROM online_sales
+-- WHERE order_date BETWEEN DATE '2023-01-01' AND DATE '2023-12-31'
+-- GROUP BY order_year, order_month
+-- ORDER BY order_year, order_month;
+
+-- MySQL monthly trend
+-- SELECT
+--     YEAR(order_date)  AS order_year,
+--     MONTH(order_date) AS order_month,
+--     SUM(amount)       AS total_revenue,
+--     COUNT(DISTINCT order_id) AS total_orders
+-- FROM online_sales
+-- WHERE order_date BETWEEN '2023-01-01' AND '2023-12-31'
+-- GROUP BY order_year, order_month
+-- ORDER BY order_year, order_month;
+
+-- SQLite monthly trend
+-- SELECT
+--     STRFTIME('%Y', order_date) AS order_year,
+--     STRFTIME('%m', order_date) AS order_month,
+--     SUM(amount) AS total_revenue,
+--     COUNT(DISTINCT order_id) AS total_orders
+-- FROM online_sales
+-- WHERE order_date BETWEEN '2023-01-01' AND '2023-12-31'
+-- GROUP BY order_year, order_month
+-- ORDER BY order_year, order_month;
